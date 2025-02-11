@@ -170,4 +170,24 @@ const throttledLog = creaThrottler(() => console.log("Eseguito!"), 2000);
 throttledLog(); // ✅ "Eseguito!"
 throttledLog(); // ❌ Ignorato (chiamato troppo presto)
 setTimeout(throttledLog, 2500); // ✅ "Eseguito!" (dopo 2.5 secondi)
-  */ 
+  */
+
+function creaThrottler(callback, tempoLimite) {
+    let ultimaEsecuzione = 0;
+
+    return function (...args) {
+        const ora = Date.now();
+        if (ora - ultimaEsecuzione >= tempoLimite) {
+            ultimaEsecuzione = ora
+            callback(...args)
+        } else {
+            console.log("non posso eseguire");
+
+        }
+    }
+}
+const throttledLog = creaThrottler(() => console.log("Eseguito!"), 2000);
+
+throttledLog(); // ✅ "Eseguito!"
+throttledLog(); // ❌ Ignorato (chiamato troppo presto)
+setTimeout(throttledLog, 2500); // ✅ "Eseguito!" (dopo 2.5 secondi)
