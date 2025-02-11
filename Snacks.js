@@ -120,7 +120,7 @@ function contoAllaRovescia(number) {
     const intervallo = setInterval(() => {
         console.log(count);
         count--;
-        if (count < 0) {
+        if (count === 0) {
             clearInterval(intervallo)
             console.log("tempo scaduto!");
 
@@ -144,8 +144,19 @@ Operazione 1
 Operazione 2
 Operazione 3*/
 
+function sequenzaOperazioni(operazioni, tempo) {
+    operazioni.forEach((operzione, index) => {
+        setTimeout(() => {
+            operzione();
+        }, tempo * index);
+    });
+}
 
-
+sequenzaOperazioni([
+    () => console.log("Operazione 1"),
+    () => console.log("Operazione 2"),
+    () => console.log("Operazione 3")
+], 2000)
 
 
 /* Snack 10 (Bonus)
