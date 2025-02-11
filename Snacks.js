@@ -115,8 +115,19 @@ Scrivi una funzione contoAllaRovescia che accetta un numero n e stampa il conto 
 con un intervallo di 1 secondo tra ogni numero.
 Quando arriva a 0, stampa "Tempo scaduto!" e interrompe il timer. */
 
+function contoAllaRovescia(number) {
+    let count = number;
+    const intervallo = setInterval(() => {
+        console.log(count);
+        count--;
+        if (count < 0) {
+            clearInterval(intervallo)
+            console.log("tempo scaduto!");
 
-
+        }
+    }, 1000);
+}
+contoAllaRovescia(10)
 /* Snack 9 (Bonus) Creare una funzione che esegue una sequenza di operazioni con ritardi
 Scrivi una funzione sequenzaOperazioni che accetta un array di operazioni (funzioni) e un tempo di intervallo.
 
